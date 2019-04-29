@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Technical Documentation Project</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Kanit:400,700'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+  <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+<nav id="navbar">
+	<header id="mainHead">CMI DevDocs</header>
+	<a href="#Introduction" class="nav-link">Introduction</a>
+	<a href="#Installation" class="nav-link">Installation</a>
+	<a href="#Staying_up-to-date" class="nav-link">Staying up-to-date</a>
+	<a href="#Core_Development" class="nav-link">Core Development</a>
+	<a href="#Webservice" class="nav-link">Webservice</a>
+	<a href="#Coding_Standards" class="nav-link">Coding Standards</a>
+	<a href="#Naming_conventions" class="nav-link">Naming conventions</a>
+	<a href="#Testing" class="nav-link">Testing</a>
+	<a href="#Executing_tests" class="nav-link">Executing tests</a>
+	<a href="#Creating_your_own_tests" class="nav-link">Creating your own tests</a>
+	<a href="#CMI_Modules" class="nav-link">CMI Modules</a>
+	<a href="#Technical_Principles" class="nav-link">Technical Principles</a>
+	<a href="#Configuration" class="nav-link">Configuration</a>
+	<a href="#Hooks" class="nav-link">Hooks</a>
+	<a href="#Widgets" class="nav-link">Widgets</a>
+	<a href="#Themes" class="nav-link">Themes</a>
+	<a href="#Documentation" class="nav-link">Documentation</a>
+</nav>
+<div class="main">
+	<main id="main-doc">
+		<section class="main-section" id="Introduction">
+			<header>Introduction</header>
+			<h1>Fundamentals of CMI Development</h1>
+			<hr>
+			<p>CMI was conceived so that third-party modules could easily build upon its foundations, making it an extremely customizable e-commerce software.</p>
+			<p>CMI’s customization is based on three possibilities:</p>
+			<ul>
+				<li>Themes,</li>
+				<li>Modules,</li>
+				<li>Overriding.</li>
+			</ul>
+
+			<p>Themes are explored in full in the Designer Guide.</p>
+			<p>Modules and the override system are explored in this Developer Guide, starting with the “Concepts” section below. You can learn more about each in the following chapters:</p>
+			<p class="info"> By default, CMI is provided with more than 100 modules, enabling you to launch your online business quickly and for free. More than 3000 modules are also available on the Addons marketplace. These additional modules were built by the CMI company or
+				members of the CMI community, and are sold at affordable prices. As a developer, you can also share your modules on this site, and receive 70% of the amounts associated with the sale of your creations. Sign up now!</p>
+		</section>
+		<section class="main-section" id="Installation">
+			<header>Installation</header>
+			<hr>
+			<p>Now that you intend to develop for CMI, you are better off keeping all your development work on your machine. The main advantage is that it makes it possible for you to entirely bypass the process of uploading your file on your online server in order
+				to test it. Another advantage is that a local test environment enables you to test code without the risk of breaking your production store. Have a local environment is the essential first step in the path of web development.</p>
+			<p>Installing any web-application locally requires that you first install the adequate environment, namely the Apache web server, the PHP language interpreter, the MySQL database server, and ideally the phpMyAdmin tool. This is called an *AMP package:
+				Apache+MySQL+PHP and the operating system, giving WAMP (Windows+Apache+MySQL+PHP), MAMP (Mac OS X+…) and LAMP (Linux+…). Since all of the items packaged are open-source, these installers are most of the time free.</p>
+			<p>Here is a selection of free AMP installers:</p>
+			<ul>
+				<li>XAMPP (Windows, Mac OS X, Linux, Solaris)</li>
+				<li>WampServer (Windows)</li>
+				<li>EasyPHP (Windows)</li>
+				<li>MAMP (Mac OS X)</li>
+			</ul>
+		</section>
+		<section class="main-section" id="Staying_up-to-date">
+			<header>Staying up-to-date</header>
+			<hr>
+			<p>The purpose of this chapter is to provide the best practices and tips for keeping your CMI up-to-date. Its compatibility range should cover at least shops running on versions 1.6 & 1.7 of CMI.</p>
+			<p>Keeping a shop updated to the latest available version ensures you have the latest changes brought by the core team and the developer community. Depending on the version you upgrade to, you can get new features, security or performance improvements,
+				or simply bug fixes.</p>
+			<p>Furthermore, the support of CMI 1.6 will end before the end of the year 2018. We advise you to use the 1.7 versions to get support, along with core and modules upgrades.</p>
+		</section>
+		<section class="main-section" id="Core_Development">
+			<header>Core Development</header>
+			<hr>
+			<p>This section describes technical aspects of the CMI Core.</p>
+
+			&bull; The CMI Webservices<br> &bull; Coding standards<br> &bull; Naming conventions<br> &bull; The CMI architecture<br> &bull; Database<br> &bull; CMI components<br> &bull; Internationalization<br> &bull; Register a new hook<br> &bull; How to compile
+			assets
+			<br> &bull; How to send e-mails<br>
+		</section>
+		<section class="main-section" id="Webservice">
+			<header>Webservice</header>
+			<h1>The CMI Webservices</h1>
+			<hr>
+			<p>CMI enables merchants to give third-party tools access to their shop’s database through a CRUD API, otherwise called a web service.</p>
+			<p>The CMI web service uses the REST architecture in order to be available on as many platforms as possible, since the HTTP protocol and XML files are understood by most platforms, if not all.</p>
+			<h2>Creating an access to the webservice</h2>
+			<p>Before you can do anything, there are few steps you need to do to create an access to the web service.</p>
+			<h3>Enabling the web service</h3>
+			<p>Go in the CMI back office, open the “Web service” page under the “Advanced Parameters” menu, and then choose “Yes” for the “Enable CMI Webservice” option.</p>
+			<h3>Creating an access key</h3>
+			<p>In order to have access to the API you need to create an access key, this will allow you to finely tune the permissions you give to the different data of your shop. You will use this key later in each call to the API. Open the “Webservice” page under
+				the “Advanced Parameters” menu, and then click the “Add New” button to access the account configuration section.</p>
+			<p>Each access key is defined by this information:</p>
+
+			&bull; <strong>Key</strong> - The API key serves as the main identifier for the webservice account you are creating. Click the “Generate” button to get an unique authentication key. You can also create your own (which must be 32 characters long), but
+			using a generated key prevents wrong-doers from guessing your key too easily. Using this key, you and other selected users will be able to access the webservice.<br> &bull; <strong>Key description</strong> - Helps you remember who you created that
+			key for, what are the access rights assigned to it, etc. The description is not public, but make sure to put all the keywords pertaining to the user, so that you can find their key more quickly.<br> &bull; <strong>Status</strong> - You can disable
+			any key at any time.<br> &bull; <strong>Permissions</strong> - This section is very important, as it enables you to assign rights for each resource you want to make available to this key. Indeed, you might want a user to have read and write access
+			on some resources, but only read access on others – and no access to the more important ones. In the list of permissions, the top left checkbox enables you to define all the rights for a given resource. Likewise, the checkbox at the top of each column
+			enables you to give the select right (View, Modify, etc.) to all the resources. Make sure to only select the rights needed for the usage of that key.<strong> Do not give all the rights for all resources to any key</strong>, keep that to yours and yours
+			only.
+			<br> &bull; <strong>Shop association</strong> - This only appears in multistore mode. It enables you to choose which of your stores the key owner should have access to.
+
+		</section>
+		<section class="main-section" id="Coding_Standards">
+			<header>Coding Standards</header>
+			<hr>
+			<p>Consistency is important, even more so when writing open-source code, since the code belongs to millions of eyeballs, and bug-fixing relies on these teeming millions to actually locate bugs and understand how to solve them.</p>
+			<p>This is why, when writing anything for CMI, be it a theme, a module or a core patch, you should strive to follow the following guidelines. They are the ones that CMI’s developers adhere to, and following them is the surest way to have your code be
+				elegantly integrated in CMI.</p>
+			<p>In short, code consistency helps keeping the code readable and maintainable.</p>
+			<h2>General conventions</h2>
+			<p>All files containing code MUST:</p>
+
+			&bull; Use only UTF-8 without BOM.<br> &bull; Use the Unix LF (linefeed) line ending.<br> &bull; End with a single blank line.<br>
+
+		</section>
+		<section class="main-section" id="Naming_conventions">
+			<header>Naming conventions</header>
+			<hr>
+			<p>As with Coding standards naming consistency is very important in CMI, thus there are conventions that every CMI contributor should follow.</p>
+			<div class="info">
+				<p> At the moment naming conventions strictly applies for Back Office migration only.</p>
+			</div>
+			<p>CMI controllers follow these naming conventions:</p>
+			&bull; Suffix controller with resource name in singular form (e.g. <code>CustomerController</code>, <code>ProductController</code>);<br> &bull; Suffix index action with <code>index</code>. For <code>Object</code> controllers (e.g. <code>CustomerController</code>)
+			it’s normally page with list of objects (e.g. Customers, Products) and for Configuration controllers (e.g. <code>PerformanceController</code>) it’s page with configuration form (e.g. Caching configuration, CCC configuration).<br> &bull; Action name
+			should be clear and concise (e.g. <code>editAction()</code>, <code>savePrivateNoteAction()</code> are good examples, but <code>formAction()</code> or <code>processAction()</code> is not and thus should be avoided).<br>
+			<p>CMI templates follow these naming conventions:</p>
+
+			&bull; Template name should match controller’s action name without action prefix. For example, if you have <code>CustomerController:viewAction()</code> action, then your template name should be <code>view.html.twig.</code><br> &bull; For a default
+			page, you should be following our standard action names. Applying this rule, this means you should have matching template names: - <code>index.html.twig</code> - <code>create.html.twig</code> - <code>edit.html.twig</code> - <code>delete.html.twig</code><br>
+
+		</section>
+		<section class="main-section" id="Testing">
+			<header>Testing</header>
+			<h1>How testing works in CMI</h1>
+			<hr>
+			<p>Automated tests are located into <code>tests</code> folder. Tests are splitted into unit, integration and functional tests in PHP using PHPUnit testing framework. For end to end tests, we use Mocha.js and webdriver.io as bridge to control Selenium
+				server.
+			</p>
+		</section>
+		<section class="main-section" id="Executing_tests">
+			<header>Executing tests</header>
+			<hr>
+			<h2>Executing Unit/integration test suites</h2>
+			<p>At least four test suites are available, testing different parts of CMI:</p>
+
+			&bull; <code>Legacy tests</code>: heritage from CMI 1.6: mix of unit, integration and functional tests;<br> &bull; <code>Legacy controllers</code>: added to help with the Symfony migration, ensures that old Back Office controllers are still runnable;<br>			&bull; <code>Admin tests</code>: specific to CMI 1.7, tests <code>src/Core</code> and <code>src/Adapter</code> classes;<br> &bull; <code>Symfony specific tests</code>: specific to CMI 1.7, test classes from <code>src/CMIBundle</code><br>
+
+			<p>Each suite needs a specific PHPUnit configuration. This is why each test suite has a specific composer command:</p>
+
+			&bull; <code>composer phpunit-legacy</code><br> &bull; <code>composer phpunit-controllers</code><br> &bull; <code>composer phpunit-admin</code><br> &bull; <code>composer phpunit-sf</code><br>
+
+			<div class="success">
+				<p>You can execute the entire PHP Unit test suites using the composer test-all command.</p>
+			</div>
+		</section>
+		<section class="main-section" id="Creating_your_own_tests">
+			<header>Creating your own tests</header>
+			<hr>
+			<h2>Creating a Unit test</h2>
+			<p>Everything is explained in the PHPUnit 5.7 documentation.</p>
+			<p>For unit tests, we strongly encourage you to base your test on the PHPUnit’s <code>TestCase</code> class only.</p>
+			<p>Unit tests should be located into <code>Unit</code> folder and follow the same path as the tested class: if a class is located into <code>src/Core/Foo/Baz</code>, the unit test should be into <code>tests/Unit/Core/Foo/Baz</code> folder.</p>
+		</section>
+		<section class="main-section" id="CMI_Modules">
+			<header>CMI Modules</header>
+			<hr>
+			<p>CMI’s extensibility revolves around modules, which are small programs that make use of CMI’s functionalities and changes them or add to them in order to make CMI easier to use or more tailored to the merchant’s needs.</p>
+		</section>
+		<section class="main-section" id="Technical_Principles">
+			<header>Technical Principles</header>
+			<hr>
+			<p>A CMI module consists of a main PHP file with as many other PHP files as needed, as well as the necessary template (<code>.tpl</code>) files and assets (images, JavaScript, CSS, etc.) to display the module’s interface, whether to the customer (on the
+				front office) or to the merchant (on the back office).</p>
+			<p>Any CMI module, once installed on an online shop, can interact with one or more “hooks”. Hooks enable you to hook/attach your code to the current View at the time of the code parsing (i.e., when displaying the cart or the product sheet, when displaying
+				the current stock, etc.). Specifically, a hook is a shortcut to the various methods available from the <code>Module</code> object, as assigned to that hook.</p>
+			<h2>Modules’ operating principles</h2>
+			<p>Modules are the ideal way to let your talent and imagination as a developer express themselves, as the creative possibilities are many and you can do pretty much anything with CMI’s module API.</p>
+			<p>Any module:</p>
+
+			&bull; can display a variety of content (blocks, text, etc.), perform many tasks (batch update, import, export, etc.), interface with other tools, and much much more.<br> &bull; can be made as configurable as necessary; the more configurable it is,
+			the easier it will be to use, and thus will be able to address the needs of a wider range of users.<br> &bull; can add functionalities to CMI without having to edit its core files, thus making it easier to perform an update of CMI without having the
+			transpose all core changes. Indeed, you should always strive to stay away from core files when building a module, even though this may seem necessary in some situations.<br>
+
+		</section>
+		<section class="main-section" id="Configuration">
+			<header>Configuration</header>
+			<hr>
+			<p>Data can be saved in the shop database without requiring a module specific table to be created.</p>
+			<p>The table configuration contains a list of key => value(s) properties which can be accessed from anywhere, including in a module. The <code>Configuration</code> class is the interface allowing each module developer to get or store data in this table.
+			</p>
+		</section>
+		<section class="main-section" id="Hooks">
+			<header>Hooks</header>
+			<hr>
+			<p>Hooks are a way to associate your code to some specific CMI events.</p>
+			<p>Most of the time, they are used to insert content in a page. The place it will be added (header, footer, left or right column …) will depend on the hook you choose.</p>
+			<p>Hooks can also be used to perform specific actions under certain circumstances (i.e. sending an e-mail to the client on an order creation).</p>
+			<p>Hook names are prefixed with “action” or “display”. This prefix indicates if a hook is triggered by an event or if it’s used to display content:</p>
+			<p><strong>action&#60;Something&#62;</strong></p>
+			<p> Triggered by specific events that take place in CMI.</p>
+			<p><strong>display&#60;Something&#62;</strong></p>
+			<p> Result in something being displayed, either in the front-end or the back-end.</p>
+		</section>
+		<section class="main-section" id="Widgets">
+			<header>Widgets</header>
+			<hr>
+			<p>Widget is an advanced concept introduced on CMI 1.7, extending hooks feature.</p>
+			<h2>Limitation of hooks</h2>
+			<p>In their basic use, a display hook will be shown at a specific place in the template. If a module wants to display the same additional content on several places, whatever the merchant chose, it still has to register and implement all the possible hooks.
+			</p>
+			<p>With widgets, module developers can display content everywhere the module is asked to do so. When a module implements widgets in its code, it allows:</p>
+
+			&bull; a theme to call the module directly with <code>{widget name="&#60;module_name&#62;"}</code><br> &bull; the core to fallback on it if a registered hook is called but its method <code>hook<hook_name>()</code> does not exist.<br>
+
+		</section>
+		<section class="main-section" id="Themes">
+			<header>Themes</header>
+			<hr>
+			<p>The default CMI install offers a neutral theme in black and white, enabling sellers to quickly and freely start their activity, whatever their business line.</p>
+			<p>More than 3000 themes are available at the CMI Addons marketplace. They were created either by members of the CMI community or the PrestaTeam, and are sold at reasonable prices – some are even free.</p>
+			<p>As a graphic designer/web developer, you too can put your themes up for sale on the CMI Addons marketplace, and earn 70% of the selling price.
+
+			</p>
+		</section>
+		<section class="main-section" id="Documentation">
+			<header>Documentation</header>
+			<hr>
+			<p>Documentation is key to the success of any project, even more so for a community project.</p>
+			<p>In this section, you’ll learn why it’s important and how you can contribute to making CMI documentation better.</p>
+
+			&bull; Why write documentation<br> &bull; Contribute<br> &bull; Shortcodes<br>
+		</section>
+	</main>
+</div>
+<a class="licensed" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /> <a class="licensed" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+</body>
+</html>
